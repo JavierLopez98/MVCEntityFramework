@@ -1,0 +1,28 @@
+﻿@model List<TodosEmpleados>
+
+
+<h1>Empleados de toda la base de datos</h1>
+
+@Html.ActionLink("Buscar empleados","Buscador","TodosEmpleados")
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Salario</th>
+            <th>Deparamtento/Hospital</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(TodosEmpleados emp in Model)
+        {
+            <tr>
+                <td>@emp.Apellido</td>
+                <td>@emp.Oficio</td>
+                <td>@emp.Salario</td>
+                <td>@emp.Nombre</td>
+            </tr>
+        }
+    </tbody>
+</table>

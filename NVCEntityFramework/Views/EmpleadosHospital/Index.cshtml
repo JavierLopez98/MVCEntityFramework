@@ -1,0 +1,25 @@
+﻿@model List<EmpleadoHospital>
+
+<h1>Empleados de los Hospitales</h1>
+@Html.ActionLink("Buscador de empleados","ProcedimientoEmpleadosHospital","EmpleadosHospital")
+<table class="table table-bordered table-dark">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Funcion</th>
+            <th>Salario</th>
+            <th>Hospital</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (EmpleadoHospital emple in Model)
+        {
+            <tr>
+                <td>@emple.Apellido</td>
+                <td>@emple.Funcion</td>
+                <td>@emple.Salario</td>
+                <td>@emple.Hospital</td>
+            </tr>
+        }
+    </tbody>
+</table>

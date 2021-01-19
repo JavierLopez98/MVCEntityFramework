@@ -1,0 +1,42 @@
+﻿@model ProcedimientoTodosEmpleados
+
+@{
+    List<String> departamentos = ViewData["departamentos"] as List<String>;
+}
+
+<form method="post">
+    <label>Departamento/Hospital</label>
+    <select name="dep" class="form-control">
+        <option selected disabled hidden></option>
+        @foreach (String dep in departamentos)
+        {
+            <option value="@dep">@dep</option>
+        }
+    </select>
+    <button type="submit">Buscar</button>
+</form>
+
+@if (Model != null)
+{
+    <h1>Suma Salarial: @Model.SumaSalarial €</h1>
+    <h1>Media Salarial: @Model.MediaSalarial €</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(TodosEmpleados emp in Model.Empleados)
+            {
+                <tr>
+                    <td>@emp.Apellido</td>
+                    <td>@emp.Oficio</td>
+                    <td>@emp.Salario</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

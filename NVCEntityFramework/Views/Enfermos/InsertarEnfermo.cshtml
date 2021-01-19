@@ -1,0 +1,26 @@
+﻿@model List<Genero>
+
+<h1>Insertar Enfermos</h1>
+
+<form method="post">
+    <label>Inscripcion</label>
+    <input type="number" name="Inscripcion" class="form-control"/>
+    <label>Apellido</label>
+    <input type="text" name="Apellido" class="form-control"/>
+    <label>Direccion</label>
+    <input type="text" name="Direccion" class="form-control"/>
+    <label>Fecha de nacimiento</label>
+    <input type="date" name="FechaNacimiento" class="form-control"/>
+    <label>Genero</label>
+    <select name="Genero">
+        @foreach(Genero gen in Model)
+        {
+            <option value="@gen.Value">@gen.Text</option>
+        }
+    </select>
+    @*<input type="text" name="Genero" class="form-control"/>*@
+    <label>Numero de la Seguridad Social</label>
+    <input type="number" name="NSS" class="form-control"/>
+
+    <button type="submit" class="btn btn-info">Insertar</button>
+</form>

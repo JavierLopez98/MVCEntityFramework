@@ -1,0 +1,30 @@
+﻿@model Enfermo
+@{
+    List<Genero> generos = ViewData["Generos"] as List<Genero>;
+}
+
+<h1>Insertar Enfermos</h1>
+
+<form method="post">
+    <label>Inscripcion</label>
+    <input type="number" name="Inscripcion" class="form-control" value="@Model.Inscripcion" readonly />
+    <label>Apellido</label>
+    <input type="text" name="Apellido" class="form-control" value="@Model.Apellido"/>
+    <label>Direccion</label>
+    <input type="text" name="Direccion" class="form-control" value="@Model.Direccion"/>
+    <label>Fecha de nacimiento</label>
+    <input type="date" name="FechaNacimiento" class="form-control" value="@Model.FechaNacimiento"/>
+    <label>Genero</label>
+    <select name="Genero" class="form-control">
+        <option value="@Model.Genero" selected disabled hidden>@Model.Genero</option>
+        @foreach (Genero gen in generos)
+        {
+            <option value="@gen.Value">@gen.Text</option>
+        }
+    </select>
+    @*<input type="text" name="Genero" class="form-control"/>*@
+    <label>Numero de la Seguridad Social</label>
+    <input type="number" name="NSS" class="form-control" value="@Model.NSS" />
+
+    <button type="submit" class="btn btn-info">Insertar</button>
+</form>

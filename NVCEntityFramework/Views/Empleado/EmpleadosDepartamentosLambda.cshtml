@@ -1,0 +1,36 @@
+﻿@model ResumenDepartamento
+
+<h1>Resumen departamentos Lambda</h1>
+
+<form method="post">
+    <label>Número departamento</label>
+    <input type="text" name="departamento" class="form-control"/>
+    <button type="submit" class="btn btn-success"> Mostrar empleados</button>
+</form>
+
+@if (Model != null)
+{
+    <p>Personas: @Model.personas</p>
+    <p>Salario Máximo: @Model.maxsalario</p>
+    <p>Salario Mínimo: @Model.minsalario</p>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Departamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Empleado emple in Model.empleados)
+            {
+                <tr>
+                    <td>@emple.Apellido</td>
+                    <td>@emple.Oficio</td>
+                    <td>@emple.departamento</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

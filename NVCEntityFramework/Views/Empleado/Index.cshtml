@@ -1,0 +1,44 @@
+﻿@model List<Empleado>
+
+<h1>Incremento de Salarios</h1>
+
+@{ 
+    List<String> oficios = ViewData["oficios"] as List<String>;
+    String seleccionado = ViewData["seleccionado"] as String;
+}
+
+<form method="post">
+    <label>Incremento:</label>
+    <input type="number" name="Incremento"/>
+
+    <select name="Oficio">
+        <option value="seleccionado" selected disabled hidden>@seleccionado</option>
+        @foreach(String oficio in oficios)
+        {
+            <option value="@oficio">@oficio</option>
+        }
+    </select>
+    <button type="submit">Modificar</button>
+</form>
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Salario</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Empleado emple in Model) {
+        <tr>
+            <td>@emple.empno</td>
+            <td>@emple.Apellido</td>
+            <td>@emple.Oficio</td>
+            <td>@emple.Salario</td>
+        </tr>
+        }
+    </tbody>
+</table>

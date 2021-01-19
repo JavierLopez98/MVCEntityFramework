@@ -1,0 +1,41 @@
+﻿@model List<Enfermo>
+
+<h1>Enfermos</h1>
+
+@Html.ActionLink("Buscador por genero","EnfermosGenero","Enfermos")
+<a asp-action="InsertarEnfermo" asp-controller="Enfermos" class="btn btn-info">Insertar Enfermos</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Enfermo enf in Model)
+        {
+        <tr>
+            <td>@enf.Apellido</td>
+            <td><a asp-action="detalles" 
+                   asp-controller="enfermos" 
+                   asp-route-inscripcion="enf.Inscripcion" 
+                   class="btn btn-success">Detalles</a>
+            </td>
+            <td><a asp-action="EliminarEnfermo" 
+                   asp-controller="Enfermos" 
+                   asp-route-inscripcion="@enf.Inscripcion" 
+                   class="btn btn-danger">Eliminar</a>
+            </td>
+            <td>
+                <a asp-action="ModificarEnfermo"
+                   asp-controller="Enfermos"
+                   asp-route-inscripcion="@enf.Inscripcion"
+                   class="btn btn-warning">Modificar</a>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
